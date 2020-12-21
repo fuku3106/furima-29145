@@ -22,14 +22,15 @@
 
 ## addresses テーブル
 
-| Column         | Type    | Options                        |
-| -------------- | ------- | ------------------------------ |
-| postal_code    | string  | null: false                    | ハイフン必須
-| prefectures_id | integer | null: false                    | ActiveHash
-| municipality   | string  | null: false                    |
-| block_number   | string  | null: false                    |
-| building_name  | string  |                                |
-| tel            | string  | null: false                    | 11桁以内、ハイフン不要
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| postal_code    | string     | null: false                    | ハイフン必須
+| prefectures_id | integer    | null: false                    | ActiveHash
+| municipality   | string     | null: false                    |
+| block_number   | string     | null: false                    |
+| building_name  | string     |                                |
+| tel            | string     | null: false                    | 11桁以内、ハイフン不要
+| order          | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -37,17 +38,17 @@
 
 ## items テーブル
 
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| name                | string     | null: false                    |
-| description         | text       | null: false                    |
-| condition           | integer    | null: false                    | ActiveHash
-| category            | integer    | null: false                    | ActiveHash
-| shipping            | integer    | null: false                    | ActiveHash
-| delivery_area       | integer    | null: false                    | ActiveHash
-| days_to_ship        | integer    | null: false                    | ActiveHash
-| price               | integer    | null: false                    | ¥300~¥9,999,999半角数字
-| user                | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| description      | text       | null: false                    |
+| condition_id     | integer    | null: false                    | ActiveHash
+| category_id      | integer    | null: false                    | ActiveHash
+| shipping_id      | integer    | null: false                    | ActiveHash
+| delivery_area_id | integer    | null: false                    | ActiveHash
+| days_to_ship_id  | integer    | null: false                    | ActiveHash
+| price            | integer    | null: false                    | ¥300~¥9,999,999半角数字
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -64,5 +65,5 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :address
 - belongs_to :item
+- has_one :address
