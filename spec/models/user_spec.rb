@@ -89,6 +89,84 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
+
+      it 'passwordは全角では登録できない' do
+        @user.password = '全角a123'
+        @user.password_confirmation = '全角a123'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is invalid')
+      end
+      it 'last_nameが全角漢字・ひらがな・カタカナ以外では登録できない(半角英字)' do
+        @user.last_name = 'test'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
+      end
+      it 'last_nameが全角漢字・ひらがな・カタカナ以外では登録できない(記号)' do
+        @user.last_name = '%%%%'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
+      end
+      it 'first_nameが全角漢字・ひらがな・カタカナ以外では登録できない(半角英字)' do
+        @user.first_name = 'test'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+      it 'first_nameが全角漢字・ひらがな・カタカナ以外では登録できない(記号)' do
+        @user.first_name = '%%%%'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+      it 'last_name_kanaが全角カタカナ以外では登録できない(全角)' do
+        @user.last_name_kana = '全角'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+      it 'last_name_kanaが全角カタカナ以外では登録できない(かな)' do
+        @user.last_name_kana = 'かな'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+      it 'last_name_kanaが全角カタカナ以外では登録できない(半角英字)' do
+        @user.last_name_kana = 'test'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+      it 'last_name_kanaが全角カタカナ以外では登録できない(数字)' do
+        @user.last_name_kana = '1234'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+      it 'last_name_kanaが全角カタカナ以外では登録できない(記号)' do
+        @user.last_name_kana = '%%%%'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+
+      it 'first_name_kanaが全角カタカナ以外では登録できない(全角)' do
+        @user.first_name_kana = '全角'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
+      end
+      it 'first_name_kanaが全角カタカナ以外では登録できない(かな)' do
+        @user.first_name_kana = 'かな'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
+      end
+      it 'first_name_kanaが全角カタカナ以外では登録できない(半角英字)' do
+        @user.first_name_kana = 'test'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
+      end
+      it 'first_name_kanaが全角カタカナ以外では登録できない(数字)' do
+        @user.first_name_kana = '1234'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
+      end
+      it 'first_name_kanaが全角カタカナ以外では登録できない(記号)' do
+        @user.first_name_kana = '%%%%'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
+      end
     end
   end
 end
