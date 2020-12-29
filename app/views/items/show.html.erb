@@ -19,11 +19,7 @@
         <%= "￥ #{@item.price}" %>
       </span>
       <span class="item-postage">
-            <% if @item.shipping_id == 2 %>
-            <%="着払い(購入者負担)"%>
-            <% else @item.shipping_id == 3 %>
-            <%="送料込み(出品者負担)"%>
-            <% end %>
+      <% @item.shipping.name %>
       </span>
     </div>
 
