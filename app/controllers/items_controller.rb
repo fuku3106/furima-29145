@@ -6,14 +6,15 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items = Item.new
+@item = Item.new
+
   end
 
   def edit
   end
 
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
 
   def create
