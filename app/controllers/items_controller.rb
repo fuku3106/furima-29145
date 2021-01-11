@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :destroy]
   before_action :item_find, only: [:edit, :show, :update, :destroy]
+  before_action :sold_out_item, only: [:edit]
+
 
   def index
     @items = Item.order('created_at DESC')
@@ -53,4 +55,9 @@ class ItemsController < ApplicationController
   def item_find
     @item = Item.find(params[:id])
   end
+
+  def sold_out_item
+    redirect_to root_path if @item.order.present?
+   end
+
 end

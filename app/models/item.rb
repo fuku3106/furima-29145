@@ -8,9 +8,10 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+  has_one :order
 
   with_options presence: true do
-    validates :name, :description, :price, :image
+    validates :name, :description, :image
 
     validates :price,
               format: { with: /\A[0-9]+\z/ }, numericality: { only_integer: true,
