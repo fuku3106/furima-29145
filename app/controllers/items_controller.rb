@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   before_action :item_find, only: [:edit, :show, :update, :destroy]
   before_action :sold_out_item, only: [:edit]
 
-
   def index
     @items = Item.order('created_at DESC')
   end
@@ -38,8 +37,8 @@ class ItemsController < ApplicationController
 
   def destroy
     if current_user.id == @item.user_id
-       @item.destroy
-       redirect_to root_path
+      @item.destroy
+      redirect_to root_path
     else
       render :show
     end
@@ -58,6 +57,5 @@ class ItemsController < ApplicationController
 
   def sold_out_item
     redirect_to root_path if @item.order.present?
-   end
-
+  end
 end
