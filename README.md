@@ -22,15 +22,15 @@
 
 ## addresses テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| postal_code    | string     | null: false                    | ハイフン必須
-| prefectures_id | integer    | null: false                    | ActiveHash
-| municipality   | string     | null: false                    |
-| block_number   | string     | null: false                    |
-| building_name  | string     |                                |
-| tel            | string     | null: false                    | 11桁以内、ハイフン不要
-| order          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| postal_code      | string     | null: false                    | ハイフン必須
+| delivery_area_id | integer    | null: false                    | ActiveHash
+| municipality     | string     | null: false                    |
+| block_number     | string     | null: false                    |
+| building_name    | string     |                                |
+| tel              | string     | null: false                    | 11桁以内、ハイフン不要
+| order            | references | null: false, foreign_key: true |
 
 ### Association
 

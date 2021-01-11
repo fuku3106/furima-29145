@@ -38,7 +38,7 @@ describe Item do
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping must be other than 1')
       end
-      it 'category_idが1では登録できない' do
+      it 'delivery_area_idが1では登録できない' do
         @item.delivery_area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery area must be other than 1')
